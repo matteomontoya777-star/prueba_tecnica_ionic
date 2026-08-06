@@ -16,9 +16,35 @@
 
 # Navegación
 
-- [ ] Configurar Tabs.
-- [ ] Configurar rutas.
-- [ ] Agregar iconos de navegación.
+- [x] Configurar Tabs.
+- [x] Configurar rutas.
+- [x] Agregar iconos de navegación.
+
+---
+
+# Pantalla Categorías
+
+- [x] Crear estructura.
+- [x] Mostrar lista.
+- [x] Mostrar cantidad de tareas.
+- [x] Botón Nueva categoría.
+
+---
+
+# Modal de categoría
+
+- [ ] Crear modal.
+- [ ] Guardar.
+- [ ] Editar.
+
+---
+
+# Gestión de categorías
+
+- [ ] Crear.
+- [ ] Editar.
+- [ ] Eliminar.
+- [ ] Pasar tareas a [Sin categoría] cuando se elimine una categoría.
 
 ---
 
@@ -57,23 +83,6 @@
 
 ---
 
-# Pantalla Categorías
-
-- [ ] Crear estructura.
-- [ ] Mostrar lista.
-- [ ] Mostrar cantidad de tareas.
-- [ ] Botón Nueva categoría.
-
----
-
-# Modal de categoría
-
-- [ ] Crear modal.
-- [ ] Guardar.
-- [ ] Editar.
-
----
-
 # Gestión de tareas
 
 - [ ] Crear.
@@ -83,20 +92,13 @@
 
 ---
 
-# Gestión de categorías
-
-- [ ] Crear.
-- [ ] Editar.
-- [ ] Eliminar.
-- [ ] Pasar tareas a [Sin categoría] cuando se elimine una categoría.
-
----
-
 # Persistencia
 
 - [ ] Guardar categorías.
+- [ ] Cargar información al iniciar (Categorías).
 - [ ] Guardar tareas.
-- [ ] Cargar información al iniciar.
+- [ ] Cargar información al iniciar (Tareas).
+- [ ] Cargar información al iniciar (Inicio).
 
 ---
 
