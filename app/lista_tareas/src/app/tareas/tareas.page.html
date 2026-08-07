@@ -62,11 +62,17 @@
         Crea tu primera tarea para comenzar.
       </p>
 
-      <ion-button>
+      <div class="contenedor-boton">
 
-        Nueva tarea
+        <ion-button
+          class="boton-crear"
+          (click)="abrirModal()">
 
-      </ion-button>
+          Nueva tarea
+
+        </ion-button>
+
+      </div>
 
     </div>
 
@@ -138,6 +144,33 @@
 
     }
 
+    <div class="contenedor-boton">
+
+        <ion-button
+          class="boton-crear"
+          (click)="abrirModal()">
+
+          Nueva tarea
+          
+        </ion-button>
+
+      </div>
+
   }
 
 </ion-content>
+
+<ion-modal
+  class="modal-tarea"
+  [isOpen]="modalAbierto"
+  (didDismiss)="cerrarModal($event)">
+
+  <ng-template>
+
+    <app-tarea-modal
+      [categorias]="categoriaService.categorias">
+    </app-tarea-modal>
+
+  </ng-template>
+
+</ion-modal>

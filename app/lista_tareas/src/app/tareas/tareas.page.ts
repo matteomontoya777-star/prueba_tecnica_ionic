@@ -20,6 +20,8 @@ import {
   createOutline,
   trashOutline
 } from 'ionicons/icons';
+import { TareaModalComponent } from '../componentes/tarea-modal/tarea-modal.component';
+import { CategoriaService } from '../services/categoria.service';
 
 interface Tarea {
 
@@ -36,7 +38,7 @@ interface Tarea {
 }
 
 @Component({
-  selector: 'app-tareas',
+  selector: 'app-tarea',
   templateUrl: './tareas.page.html',
   styleUrls: ['./tareas.page.scss'],
   standalone: true,
@@ -51,12 +53,18 @@ interface Tarea {
       IonSelectOption,
       IonButton,
       IonCheckbox,
-      IonIcon
+      IonIcon,
+      TareaModalComponent,
+      IonModal,
+      CommonModule,
+      FormsModule
     ]
 })
 export class TareasPage implements OnInit {
 
-  constructor() {
+  constructor(
+    public categoriaService: CategoriaService
+  ) {
     addIcons({
       createOutline,
       trashOutline
@@ -67,5 +75,33 @@ export class TareasPage implements OnInit {
   }
 
   tareas: Tarea[] = []
+
+  modalAbierto = false;
+
+  abrirModal() {
+
+    this.modalAbierto = true;
+
+  }
+
+  cerrarModal(event: CustomEvent) {
+
+    this.modalAbierto = false;
+
+    const tarea = event.detail.data;
+
+    if (!tarea) {
+      return;
+    }
+
+    this.tareas.push({
+      id: Date.now().toString(),
+      nombre: tarea.nombre,
+      categoria: tarea.categoria,
+      prioridad: tarea.prioridad,
+      completada: false
+    });
+
+  }
 
 }

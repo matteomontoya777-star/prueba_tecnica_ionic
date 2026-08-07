@@ -16,7 +16,7 @@ import { Categoria } from '../models/categoria.model';
 import { createOutline, trashOutline } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
 import { CategoriaModalComponent } from '../componentes/categoria-modal/categoria-modal.component';
-
+import { CategoriaService } from '../services/categoria.service';
 
 @Component({
   selector: 'app-categorias',
@@ -40,13 +40,14 @@ import { CategoriaModalComponent } from '../componentes/categoria-modal/categori
 })
 export class CategoriasPage {
 
-  constructor() {
+  constructor(
+    public categoriaService: CategoriaService
+  ) {
     addIcons({
       createOutline,
       trashOutline
     });
   }
-  categorias: Categoria[] = [];
 
   indiceEditar = -1;
 
@@ -64,11 +65,11 @@ export class CategoriasPage {
     }
 
     if (this.indiceEditar >= 0) {
-      this.categorias[this.indiceEditar].nombre = nombre;
+      this.categoriaService.categorias[this.indiceEditar].nombre = nombre;
       this.indiceEditar = -1;
 
     } else {
-      this.categorias.push({
+      this.categoriaService.categorias.push({
         id: Date.now().toString(),
         nombre
       });
@@ -76,7 +77,7 @@ export class CategoriasPage {
   }
 
   get tieneCategorias(): boolean {
-    return this.categorias.length > 0;
+    return this.categoriaService.categorias.length > 0;
   }
 
   editarCategoria(indice: number) {
@@ -89,7 +90,7 @@ export class CategoriasPage {
 
   eliminarCategoria(indice: number) {
 
-    this.categorias.splice(indice, 1);
+    this.categoriaService.categorias.splice(indice, 1);
 
   }
 

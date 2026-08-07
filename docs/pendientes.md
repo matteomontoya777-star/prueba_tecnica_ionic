@@ -60,11 +60,11 @@
 
 # Modal de tarea
 
-- [ ] Crear modal.
-- [ ] Campo nombre.
-- [ ] Selector categoría.
-- [ ] Selector prioridad.
-- [ ] Guardar.
+- [x] Crear modal.
+- [x] Campo nombre.
+- [x] Selector categoría.
+- [x] Selector prioridad.
+- [x] Guardar.
 
 ---
 

@@ -20,7 +20,7 @@
 
         <ion-button 
           (click)="abrirModal()">
-          Abrir modal
+          Nueva categoría
         </ion-button>
 
       </div>
@@ -32,7 +32,7 @@
 
     <ion-list>
 
-      @for (categoria of categorias; track categoria.id; let i = $index) {
+      @for (categoria of categoriaService.categorias; track categoria.id; let i = $index) {
 
         <ion-item>
 
@@ -89,7 +89,7 @@
   (didDismiss)="cerrarModal($event)">
   <ng-template>
     <app-categoria-modal
-      [nombre]="indiceEditar >= 0 ? categorias[indiceEditar].nombre : ''"
+      [nombre]="indiceEditar >= 0 ? categoriaService.categorias[indiceEditar].nombre : ''"
       [titulo]="indiceEditar >= 0 ? 'Editar categoría' : 'Nueva categoría'">
     </app-categoria-modal>
   </ng-template>
