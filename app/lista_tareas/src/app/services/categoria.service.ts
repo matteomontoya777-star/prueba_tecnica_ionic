@@ -11,6 +11,27 @@ export class CategoriaService {
 
   constructor(
     private tareaService: TareaService
-  ) {}
+  ) {
+
+    const categoriasGuardadas =
+      localStorage.getItem('categorias');
+
+    if (categoriasGuardadas) {
+
+      this.categorias =
+        JSON.parse(categoriasGuardadas);
+
+    }
+
+  }
+
+  guardar() {
+
+    localStorage.setItem(
+      'categorias',
+      JSON.stringify(this.categorias)
+    );
+
+  }
 
 }

@@ -178,6 +178,7 @@ export class TareasPage implements OnInit {
       if (tarea.seleccionada !== undefined) {
 
         tarea.completada = tarea.seleccionada;
+        this.tareaService.guardarCambios();
 
       }
 

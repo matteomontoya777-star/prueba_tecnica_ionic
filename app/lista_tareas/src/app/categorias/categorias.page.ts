@@ -71,6 +71,7 @@ export class CategoriasPage {
 
     if (this.indiceEditar >= 0) {
       this.categoriaService.categorias[this.indiceEditar].nombre = nombre;
+      this.categoriaService.guardar();
       this.indiceEditar = -1;
 
     } else {
@@ -78,6 +79,7 @@ export class CategoriasPage {
         id: Date.now().toString(),
         nombre
       });
+      this.categoriaService.guardar();
     }
   }
 
@@ -101,6 +103,7 @@ export class CategoriasPage {
     this.tareaService.pasarASinCategoria(nombreCategoria);
 
     this.categoriaService.categorias.splice(indice, 1);
+    this.categoriaService.guardar();
 
   }
 
