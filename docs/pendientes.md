@@ -70,10 +70,9 @@
 
 # Gestión de tareas
 
-- [ ] Crear.
-- [ ] Editar.
-- [ ] Completar.
-- [ ] Eliminar.
+- [x] Editar.
+- [x] Completar.
+- [x] Eliminar.
 - [ ] Pasar tareas a [Sin categoría] cuando se elimine una categoría.
 
 ---

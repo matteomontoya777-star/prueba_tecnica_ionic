@@ -114,3 +114,8 @@
   justify-content: center;
   margin-top: 24px;
 }
+
+.completada {
+  text-decoration: line-through;
+  color: var(--ion-color-medium);
+}

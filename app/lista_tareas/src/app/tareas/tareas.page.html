@@ -15,13 +15,22 @@
     <ion-item>
 
       <ion-select
-        label="Categoría"
-        labelPlacement="stacked"
-        placeholder="Todas">
+        [(ngModel)]="categoriaFiltro">
 
         <ion-select-option value="">
           Todas
         </ion-select-option>
+
+        @for (categoria of categoriaService.categorias; track categoria.id) {
+
+          <ion-select-option
+            [value]="categoria.nombre">
+
+            {{ categoria.nombre }}
+
+          </ion-select-option>
+
+        }
 
       </ion-select>
 
@@ -30,19 +39,17 @@
     <ion-item>
 
       <ion-select
-        label="Estado"
-        labelPlacement="stacked"
-        value="pendiente">
+        [(ngModel)]="estadoFiltro">
 
-        <ion-select-option value="pendiente">
+        <ion-select-option value="Pendientes">
           Pendientes
         </ion-select-option>
 
-        <ion-select-option value="terminada">
+        <ion-select-option value="Terminadas">
           Terminadas
         </ion-select-option>
 
-        <ion-select-option value="">
+        <ion-select-option value="Todas">
           Todas
         </ion-select-option>
 
@@ -52,7 +59,7 @@
 
   </div>
 
-  @if (tareas.length === 0) {
+  @if (tareaService.tareas.length === 0) {
 
     <div class="estado-vacio">
 
@@ -78,15 +85,20 @@
 
   } @else {
 
-    @for (tarea of tareas; track tarea.id) {
+    @for (tarea of tareasFiltradas; track tarea.id; let i = $index) {
 
       <div class="tarjeta-tarea">
 
         <div class="fila-superior">
 
-          <ion-checkbox></ion-checkbox>
+          <ion-checkbox
+            [checked]="tarea.seleccionada"
+            (ionChange)="completarTarea(i)">
+          </ion-checkbox>
 
-          <span class="nombre-tarea">
+          <span
+            class="nombre-tarea"
+            [class.completada]="tarea.seleccionada">
 
             {{ tarea.nombre }}
 
@@ -128,17 +140,35 @@
 
             <ion-icon
               class="icono-editar"
-              name="create-outline">
+              name="create-outline"
+              (click)="editarTarea(i)">
             </ion-icon>
 
             <ion-icon
               class="icono-eliminar"
-              name="trash-outline">
+              name="trash-outline"
+              (click)="eliminarTarea(i)">
             </ion-icon>
 
           </div>
 
         </div>
+
+      </div>
+
+    }
+
+    @if (cambiosPendientes) {
+
+      <div class="contenedor-boton">
+
+        <ion-button
+          color="success"
+          (click)="guardarCambios()">
+
+          Guardar cambios
+
+        </ion-button>
 
       </div>
 
@@ -168,7 +198,11 @@
   <ng-template>
 
     <app-tarea-modal
-      [categorias]="categoriaService.categorias">
+      [categorias]="categoriaService.categorias"
+      [titulo]="indiceEditar >= 0 ? 'Editar tarea' : 'Nueva tarea'"
+      [nombre]="indiceEditar >= 0 ? tareaService.tareas[indiceEditar].nombre : ''"
+      [categoria]="indiceEditar >= 0 ? tareaService.tareas[indiceEditar].categoria : ''"
+      [prioridad]="indiceEditar >= 0 ? tareaService.tareas[indiceEditar].prioridad : 'Media'">
     </app-tarea-modal>
 
   </ng-template>

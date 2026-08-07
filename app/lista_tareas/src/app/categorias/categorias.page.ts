@@ -17,6 +17,8 @@ import { createOutline, trashOutline } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
 import { CategoriaModalComponent } from '../componentes/categoria-modal/categoria-modal.component';
 import { CategoriaService } from '../services/categoria.service';
+import { TareaService } from '../services/tarea.services';
+
 
 @Component({
   selector: 'app-categorias',
@@ -41,12 +43,15 @@ import { CategoriaService } from '../services/categoria.service';
 export class CategoriasPage {
 
   constructor(
-    public categoriaService: CategoriaService
+    public categoriaService: CategoriaService,
+    public tareaService: TareaService
   ) {
+
     addIcons({
       createOutline,
       trashOutline
     });
+
   }
 
   indiceEditar = -1;
@@ -89,6 +94,11 @@ export class CategoriasPage {
   }
 
   eliminarCategoria(indice: number) {
+
+    const nombreCategoria =
+      this.categoriaService.categorias[indice].nombre;
+
+    this.tareaService.pasarASinCategoria(nombreCategoria);
 
     this.categoriaService.categorias.splice(indice, 1);
 

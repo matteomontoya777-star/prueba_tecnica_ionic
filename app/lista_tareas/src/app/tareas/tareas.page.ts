@@ -22,20 +22,10 @@ import {
 } from 'ionicons/icons';
 import { TareaModalComponent } from '../componentes/tarea-modal/tarea-modal.component';
 import { CategoriaService } from '../services/categoria.service';
-
-interface Tarea {
-
-  id: string;
-
-  nombre: string;
-
-  categoria: string;
-
-  prioridad: 'Alta' | 'Media' | 'Baja';
-
-  completada: boolean;
-
-}
+import {
+  TareaService,
+  Tarea
+} from '../services/tarea.services';
 
 @Component({
   selector: 'app-tarea',
@@ -62,21 +52,54 @@ interface Tarea {
 })
 export class TareasPage implements OnInit {
 
-  constructor(
-    public categoriaService: CategoriaService
-  ) {
-    addIcons({
-      createOutline,
-      trashOutline
+  categoriaFiltro = '';
+
+  estadoFiltro = 'Pendientes';
+
+  modalAbierto = false;
+
+  indiceEditar = -1;
+
+  cambiosPendientes = false;
+
+  get tareasFiltradas() {
+
+    return this.tareaService.tareas.filter(tarea => {
+
+      const categoriaOk =
+        this.categoriaFiltro === '' ||
+        tarea.categoria === this.categoriaFiltro;
+
+      const estadoOk =
+        this.estadoFiltro === 'Todas'
+          ? true
+          : this.estadoFiltro === 'Pendientes'
+            ? !tarea.completada
+            : tarea.completada;
+
+      return categoriaOk && estadoOk;
+
     });
+
   }
+
+  constructor(
+
+      public categoriaService: CategoriaService,
+
+      public tareaService: TareaService
+
+  ) {
+
+      addIcons({
+        createOutline,
+        trashOutline
+      });
+
+    }
 
   ngOnInit() {
   }
-
-  tareas: Tarea[] = []
-
-  modalAbierto = false;
 
   abrirModal() {
 
@@ -94,13 +117,72 @@ export class TareasPage implements OnInit {
       return;
     }
 
-    this.tareas.push({
-      id: Date.now().toString(),
-      nombre: tarea.nombre,
-      categoria: tarea.categoria,
-      prioridad: tarea.prioridad,
-      completada: false
+    if (this.indiceEditar >= 0) {
+
+      this.tareaService.tareas[this.indiceEditar].nombre = tarea.nombre;
+      this.tareaService.tareas[this.indiceEditar].categoria = tarea.categoria;
+      this.tareaService.tareas[this.indiceEditar].prioridad = tarea.prioridad;
+
+      this.indiceEditar = -1;
+
+    } else {
+
+      this.tareaService.crear({
+
+        id: Date.now().toString(),
+
+        nombre: tarea.nombre,
+
+        categoria: tarea.categoria,
+
+        prioridad: tarea.prioridad,
+
+        completada: false,
+
+        seleccionada: false
+
+      });
+
+    }
+
+  }
+
+  editarTarea(indice: number) {
+
+    this.indiceEditar = indice;
+
+    this.modalAbierto = true;
+
+  }
+
+  eliminarTarea(indice: number) {
+
+    this.tareaService.eliminar(indice);
+
+  }
+
+  completarTarea(indice: number) {
+
+    this.tareaService.tareas[indice].seleccionada =
+      !this.tareaService.tareas[indice].seleccionada;
+
+    this.cambiosPendientes = true;
+
+  }
+
+  guardarCambios() {
+
+    this.tareaService.tareas.forEach(tarea => {
+
+      if (tarea.seleccionada !== undefined) {
+
+        tarea.completada = tarea.seleccionada;
+
+      }
+
     });
+
+    this.cambiosPendientes = false;
 
   }
 

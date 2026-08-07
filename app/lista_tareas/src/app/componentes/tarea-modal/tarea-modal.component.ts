@@ -42,13 +42,13 @@ export class TareaModalComponent {
 
   @Input() categorias: Categoria[] = [];
 
-  @Input() indice = -1;
+  @Input() titulo = 'Nueva tarea';
 
-  nombre = '';
+  @Input() nombre = '';
 
-  categoria = '';
+  @Input() categoria = '';
 
-  prioridad = 'Media';
+  @Input() prioridad: 'Alta' | 'Media' | 'Baja' = 'Media';
 
   cancelar() {
     this.modalController.dismiss();
