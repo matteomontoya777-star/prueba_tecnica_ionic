@@ -92,11 +92,17 @@
 
 # Firebase
 
-- [ ] Configurar Firebase.
-- [ ] Configurar Remote Config.
-- [ ] Implementar Feature Flag.
+- [x] Configurar Firebase.
+- [x] Configurar Remote Config.
+- [x] Implementar Feature Flag.
 
 ---
+
+# Persistencia Local
+
+- [ ] Guardar tareas.
+- [] Guardar categorías.
+- [] Recuperar al iniciar. 
 
 # Android / iOS
 

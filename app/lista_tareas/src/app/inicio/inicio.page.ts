@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FeatureFlagService } from '../services/feature-flag.service';
 import { FormsModule } from '@angular/forms';
 import {
   IonContent,
@@ -59,7 +60,8 @@ export class InicioPage {
 
   constructor(
     public categoriaService: CategoriaService,
-    public tareaService: TareaService
+    public tareaService: TareaService,
+    public featureFlagService: FeatureFlagService
   ) {
 
     addIcons({

@@ -55,17 +55,21 @@
 
             </span>
 
-            @if (tarea.prioridad === 'Alta') {
+            @if (featureFlagService.mostrarPrioridad) {
 
-              <span class="prioridad alta"></span>
+              @if (tarea.prioridad === 'Alta') {
 
-            } @else if (tarea.prioridad === 'Media') {
+                <span class="prioridad alta"></span>
 
-              <span class="prioridad media"></span>
+              } @else if (tarea.prioridad === 'Media') {
 
-            } @else {
+                <span class="prioridad media"></span>
 
-              <span class="prioridad baja"></span>
+              } @else {
+
+                <span class="prioridad baja"></span>
+
+              }
 
             }
 

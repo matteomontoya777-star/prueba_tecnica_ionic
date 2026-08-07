@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FeatureFlagService } from '../services/feature-flag.service';
 import { FormsModule } from '@angular/forms';
 import { 
   IonHeader,
@@ -86,8 +87,8 @@ export class TareasPage implements OnInit {
   constructor(
 
       public categoriaService: CategoriaService,
-
-      public tareaService: TareaService
+      public tareaService: TareaService,
+      public featureFlagService: FeatureFlagService
 
   ) {
 
