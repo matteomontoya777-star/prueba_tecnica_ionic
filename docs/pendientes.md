@@ -73,16 +73,17 @@
 - [x] Editar.
 - [x] Completar.
 - [x] Eliminar.
-- [ ] Pasar tareas a [Sin categoría] cuando se elimine una categoría.
+- [x] Pasar tareas a [Sin categoría] cuando se elimine una categoría.
 
 ---
 
 # Pantalla Inicio
 
-- [ ] Crear estructura.
-- [ ] Mostrar mensaje cuando no existan tareas.
-- [ ] Mostrar las 3 tareas pendientes de mayor prioridad.
-- [ ] Botón "Ver todas las tareas".
+- [x] Crear estructura.
+- [x] Mostrar mensaje cuando no existan tareas.
+- [x] Mostrar las 3 tareas pendientes de mayor prioridad.
+
+# Acciones Pantalla Inicio
 - [ ] Permitir completar una tarea.
 - [ ] Permitir editar una tarea.
 - [ ] Permitir eliminar una tarea.

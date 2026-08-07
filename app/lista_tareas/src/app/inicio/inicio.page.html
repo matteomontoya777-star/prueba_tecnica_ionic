@@ -1,13 +1,73 @@
-<ion-header [translucent]="true">
+<ion-header>
+
   <ion-toolbar>
-    <ion-title>Inicio</ion-title>
+
+    <ion-title>
+
+      Inicio
+
+    </ion-title>
+
   </ion-toolbar>
+
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Inicio</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+
+  @if (tareasInicio.length === 0) {
+
+    <div class="estado-vacio">
+
+      <h2>No tienes tareas pendientes</h2>
+
+      <p>
+        Crea una tarea para comenzar.
+      </p>
+
+    </div>
+
+  } @else {
+
+    <h2>
+
+      Próximas tareas
+
+    </h2>
+
+    @for (tarea of tareasInicio; track tarea.id) {
+
+      <ion-item>
+
+        <ion-label>
+
+          {{ tarea.nombre }}
+
+        </ion-label>
+
+        <span>
+
+          @switch (tarea.prioridad) {
+
+            @case ('Alta') {
+              🔴
+            }
+
+            @case ('Media') {
+              🟡
+            }
+
+            @case ('Baja') {
+              🟢
+            }
+
+          }
+
+        </span>
+
+      </ion-item>
+
+    }
+
+  }
+
 </ion-content>
