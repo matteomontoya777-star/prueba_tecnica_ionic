@@ -32,7 +32,7 @@
 
     <ion-list>
 
-      @for (categoria of categorias; track categoria.id) {
+      @for (categoria of categorias; track categoria.id; let i = $index) {
 
         <ion-item>
 
@@ -44,7 +44,8 @@
 
           <ion-button
             slot="end"
-            fill="clear">
+            fill="clear"
+            (click)="editarCategoria(i)">
 
             <ion-icon name="create-outline"></ion-icon>
 
@@ -53,7 +54,8 @@
           <ion-button
             slot="end"
             fill="clear"
-            color="danger">
+            color="danger"
+            (click)="eliminarCategoria(i)">
 
             <ion-icon name="trash-outline"></ion-icon>
 
@@ -86,6 +88,9 @@
   [isOpen]="modalAbierto"
   (didDismiss)="cerrarModal($event)">
   <ng-template>
-    <app-categoria-modal></app-categoria-modal>
+    <app-categoria-modal
+      [nombre]="indiceEditar >= 0 ? categorias[indiceEditar].nombre : ''"
+      [titulo]="indiceEditar >= 0 ? 'Editar categoría' : 'Nueva categoría'">
+    </app-categoria-modal>
   </ng-template>
 </ion-modal>

@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ModalController } from '@ionic/angular/standalone';
 import {
@@ -36,7 +36,10 @@ export class CategoriaModalComponent {
     private modalController: ModalController
   ) {}
 
-  nombre = '';
+  @Input()nombre = '';
+
+  @Input() indice = -1;
+  @Input() titulo = 'Nueva categoría';
 
   cancelar() {
     this.modalController.dismiss();

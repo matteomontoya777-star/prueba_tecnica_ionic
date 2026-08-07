@@ -40,10 +40,9 @@
 
 # Gestión de categorías
 
-- [ ] Crear.
-- [ ] Editar.
-- [ ] Eliminar.
-- [ ] Pasar tareas a [Sin categoría] cuando se elimine una categoría.
+- [x] Crear.
+- [x] Editar.
+- [x] Eliminar.
 
 ---
 
@@ -78,7 +77,6 @@
 - [ ] Selector categoría.
 - [ ] Selector prioridad.
 - [ ] Guardar.
-- [ ] Editar.
 
 ---
 
@@ -88,6 +86,7 @@
 - [ ] Editar.
 - [ ] Completar.
 - [ ] Eliminar.
+- [ ] Pasar tareas a [Sin categoría] cuando se elimine una categoría.
 
 ---
 

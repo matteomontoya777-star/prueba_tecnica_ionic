@@ -49,6 +49,8 @@ export class CategoriasPage {
   }
   categorias: Categoria[] = [];
 
+  indiceEditar = -1;
+
   modalAbierto = false;
 
   abrirModal() {
@@ -61,14 +63,35 @@ export class CategoriasPage {
     if (!nombre) {
       return;
     }
-    this.categorias.push({
-      id: Date.now().toString(),
-      nombre
-    });
+
+    if (this.indiceEditar >= 0) {
+      this.categorias[this.indiceEditar].nombre = nombre;
+      this.indiceEditar = -1;
+
+    } else {
+      this.categorias.push({
+        id: Date.now().toString(),
+        nombre
+      });
+    }
   }
 
   get tieneCategorias(): boolean {
     return this.categorias.length > 0;
+  }
+
+  editarCategoria(indice: number) {
+
+    this.indiceEditar = indice;
+
+    this.modalAbierto = true;
+
+  }
+
+  eliminarCategoria(indice: number) {
+
+    this.categorias.splice(indice, 1);
+
   }
 
 }
