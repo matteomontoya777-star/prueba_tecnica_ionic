@@ -1,13 +1,143 @@
-<ion-header [translucent]="true">
+<ion-header>
+
   <ion-toolbar>
+
     <ion-title>Tareas</ion-title>
+
   </ion-toolbar>
+
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tareas</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+
+  <div class="contenedor-filtros">
+
+    <ion-item>
+
+      <ion-select
+        label="Categoría"
+        labelPlacement="stacked"
+        placeholder="Todas">
+
+        <ion-select-option value="">
+          Todas
+        </ion-select-option>
+
+      </ion-select>
+
+    </ion-item>
+
+    <ion-item>
+
+      <ion-select
+        label="Estado"
+        labelPlacement="stacked"
+        value="pendiente">
+
+        <ion-select-option value="pendiente">
+          Pendientes
+        </ion-select-option>
+
+        <ion-select-option value="terminada">
+          Terminadas
+        </ion-select-option>
+
+        <ion-select-option value="">
+          Todas
+        </ion-select-option>
+
+      </ion-select>
+
+    </ion-item>
+
+  </div>
+
+  @if (tareas.length === 0) {
+
+    <div class="estado-vacio">
+
+      <h2>No hay tareas registradas</h2>
+
+      <p>
+        Crea tu primera tarea para comenzar.
+      </p>
+
+      <ion-button>
+
+        Nueva tarea
+
+      </ion-button>
+
+    </div>
+
+  } @else {
+
+    @for (tarea of tareas; track tarea.id) {
+
+      <div class="tarjeta-tarea">
+
+        <div class="fila-superior">
+
+          <ion-checkbox></ion-checkbox>
+
+          <span class="nombre-tarea">
+
+            {{ tarea.nombre }}
+
+          </span>
+
+          @if (tarea.prioridad === 'Alta') {
+
+            <span class="prioridad alta"></span>
+
+          } @else if (tarea.prioridad === 'Media') {
+
+            <span class="prioridad media"></span>
+
+          } @else {
+
+            <span class="prioridad baja"></span>
+
+          }
+
+        </div>
+
+        <div class="fila-inferior">
+
+          <span class="categoria">
+
+            @if (tarea.categoria) {
+
+              {{ tarea.categoria }}
+
+            } @else {
+
+              Sin categoría
+
+            }
+
+          </span>
+
+          <div class="acciones">
+
+            <ion-icon
+              class="icono-editar"
+              name="create-outline">
+            </ion-icon>
+
+            <ion-icon
+              class="icono-eliminar"
+              name="trash-outline">
+            </ion-icon>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    }
+
+  }
+
 </ion-content>

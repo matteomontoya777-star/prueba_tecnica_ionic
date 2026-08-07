@@ -46,27 +46,15 @@
 
 ---
 
-# Pantalla Inicio
-
-- [ ] Crear estructura.
-- [ ] Mostrar mensaje cuando no existan tareas.
-- [ ] Mostrar las 3 tareas pendientes de mayor prioridad.
-- [ ] Botón "Ver todas las tareas".
-- [ ] Permitir completar una tarea.
-- [ ] Permitir editar una tarea.
-- [ ] Permitir eliminar una tarea.
-
----
-
 # Pantalla Tareas
 
-- [ ] Crear estructura.
-- [ ] Mostrar lista de tareas.
-- [ ] Mostrar prioridad.
-- [ ] Mostrar categoría.
-- [ ] Filtro por categoría.
-- [ ] Filtro por estado.
-- [ ] Botón Nueva tarea.
+- [x] Crear estructura.
+- [x] Mostrar lista de tareas.
+- [x] Mostrar prioridad.
+- [x] Mostrar categoría.
+- [x] Filtro por categoría.
+- [x] Filtro por estado.
+- [x] Botón Nueva tarea.
 
 ---
 
@@ -87,6 +75,18 @@
 - [ ] Completar.
 - [ ] Eliminar.
 - [ ] Pasar tareas a [Sin categoría] cuando se elimine una categoría.
+
+---
+
+# Pantalla Inicio
+
+- [ ] Crear estructura.
+- [ ] Mostrar mensaje cuando no existan tareas.
+- [ ] Mostrar las 3 tareas pendientes de mayor prioridad.
+- [ ] Botón "Ver todas las tareas".
+- [ ] Permitir completar una tarea.
+- [ ] Permitir editar una tarea.
+- [ ] Permitir eliminar una tarea.
 
 ---
 

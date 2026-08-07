@@ -12,7 +12,6 @@ import {
   IonIcon,
   IonModal
 } from '@ionic/angular/standalone';
-
 import { Categoria } from '../models/categoria.model';
 import { createOutline, trashOutline } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
