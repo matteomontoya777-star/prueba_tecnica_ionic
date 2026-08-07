@@ -33,9 +33,8 @@
 
 # Modal de categoría
 
-- [ ] Crear modal.
-- [ ] Guardar.
-- [ ] Editar.
+- [x] Crear modal.
+- [x] Guardar.
 
 ---
 

@@ -1,0 +1,35 @@
+<ion-content class="ion-padding">
+
+  <h2>Nueva categoría</h2>
+
+  <ion-item>
+
+    <ion-input
+        [(ngModel)]="nombre"
+        label="Nombre"
+        labelPlacement="stacked"
+        placeholder="Ingrese el nombre">
+    </ion-input>
+
+  </ion-item>
+
+  <div class="contenedor-botones">
+
+    <ion-button
+      fill="outline"
+      (click)="cancelar()">
+
+      Cancelar
+
+    </ion-button>
+
+    <ion-button
+      (click)="guardar()">
+
+      Guardar
+
+    </ion-button>
+
+  </div>
+
+</ion-content>

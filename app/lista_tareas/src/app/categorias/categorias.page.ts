@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   IonButton,
@@ -10,11 +10,13 @@ import {
   IonLabel,
   IonList,
   IonIcon,
+  IonModal
 } from '@ionic/angular/standalone';
 
 import { Categoria } from '../models/categoria.model';
-import { addIcons } from 'ionicons';
 import { createOutline, trashOutline } from 'ionicons/icons';
+import { addIcons } from 'ionicons';
+import { CategoriaModalComponent } from '../componentes/categoria-modal/categoria-modal.component';
 
 
 @Component({
@@ -32,7 +34,9 @@ import { createOutline, trashOutline } from 'ionicons/icons';
     IonItem,
     IonLabel,
     IonList,
-    IonIcon
+    IonIcon,
+    IonModal,
+    CategoriaModalComponent
   ]
 })
 export class CategoriasPage {
@@ -43,8 +47,25 @@ export class CategoriasPage {
       trashOutline
     });
   }
-
   categorias: Categoria[] = [];
+
+  modalAbierto = false;
+
+  abrirModal() {
+    this.modalAbierto = true;
+  }
+
+  cerrarModal(event: CustomEvent) {
+    this.modalAbierto = false;
+    const nombre = event.detail.data;
+    if (!nombre) {
+      return;
+    }
+    this.categorias.push({
+      id: Date.now().toString(),
+      nombre
+    });
+  }
 
   get tieneCategorias(): boolean {
     return this.categorias.length > 0;

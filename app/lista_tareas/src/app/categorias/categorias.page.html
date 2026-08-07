@@ -18,10 +18,9 @@
 
       <div class="contenedor-boton">
 
-        <ion-button class="boton-crear">
-
-          Nueva categoría
-
+        <ion-button 
+          (click)="abrirModal()">
+          Abrir modal
         </ion-button>
 
       </div>
@@ -68,7 +67,9 @@
 
     <div class="contenedor-boton">
 
-      <ion-button class="boton-crear">
+      <ion-button 
+        class="boton-crear"
+        (click)="abrirModal()">
 
         Nueva categoría
 
@@ -79,3 +80,12 @@
   }
 
 </ion-content>
+
+<ion-modal
+  class="modal-categoria"
+  [isOpen]="modalAbierto"
+  (didDismiss)="cerrarModal($event)">
+  <ng-template>
+    <app-categoria-modal></app-categoria-modal>
+  </ng-template>
+</ion-modal>

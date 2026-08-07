@@ -7,6 +7,8 @@ import {
   IonLabel,
   IonRouterOutlet
 } from '@ionic/angular/standalone';
+import { homeOutline, listOutline, folderOpenOutline } from 'ionicons/icons';
+import { addIcons } from 'ionicons';
 
 @Component({
   selector: 'app-tabs',
@@ -22,4 +24,12 @@ import {
     IonRouterOutlet
   ]
 })
-export class TabsPage {}
+export class TabsPage {
+  constructor() {
+    addIcons({
+      homeOutline,
+      listOutline,
+      folderOpenOutline
+    });
+  }
+}
