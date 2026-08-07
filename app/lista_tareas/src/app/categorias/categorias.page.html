@@ -6,80 +6,84 @@
 
 <ion-content class="ion-padding">
 
-  @if (!tieneCategorias) {
+  <div class="contenedor-pantalla">
 
-    <div class="estado-vacio">
+    @if (!tieneCategorias) {
 
-      <h2>Aún no has creado categorías.</h2>
+      <div class="estado-vacio">
 
-      <p>
-        Crea categorías para organizar mejor tus tareas.
-      </p>
+        <h2>Aún no has creado categorías.</h2>
+
+        <p>
+          Crea categorías para organizar mejor tus tareas.
+        </p>
+
+        <div class="contenedor-boton">
+
+          <ion-button 
+            (click)="abrirModal()">
+            Nueva categoría
+          </ion-button>
+
+        </div>
+
+      </div>
+
+    }
+    @else {
+
+      <ion-list>
+
+        @for (categoria of categoriaService.categorias; track categoria.id; let i = $index) {
+
+          <ion-item>
+
+            <ion-label>
+
+              <h2>{{ categoria.nombre }}</h2>
+
+            </ion-label>
+
+            <ion-button
+              slot="end"
+              fill="clear"
+              (click)="editarCategoria(i)">
+
+              <ion-icon name="create-outline"></ion-icon>
+
+            </ion-button>
+
+            <ion-button
+              slot="end"
+              fill="clear"
+              color="danger"
+              (click)="eliminarCategoria(i)">
+
+              <ion-icon name="trash-outline"></ion-icon>
+
+            </ion-button>
+
+          </ion-item>
+
+        }
+
+      </ion-list>
 
       <div class="contenedor-boton">
 
         <ion-button 
+          class="boton-crear"
           (click)="abrirModal()">
+
           Nueva categoría
+
         </ion-button>
 
       </div>
 
-    </div>
+    }
 
-  }
-  @else {
-
-    <ion-list>
-
-      @for (categoria of categoriaService.categorias; track categoria.id; let i = $index) {
-
-        <ion-item>
-
-          <ion-label>
-
-            <h2>{{ categoria.nombre }}</h2>
-
-          </ion-label>
-
-          <ion-button
-            slot="end"
-            fill="clear"
-            (click)="editarCategoria(i)">
-
-            <ion-icon name="create-outline"></ion-icon>
-
-          </ion-button>
-
-          <ion-button
-            slot="end"
-            fill="clear"
-            color="danger"
-            (click)="eliminarCategoria(i)">
-
-            <ion-icon name="trash-outline"></ion-icon>
-
-          </ion-button>
-
-        </ion-item>
-
-      }
-
-    </ion-list>
-
-    <div class="contenedor-boton">
-
-      <ion-button 
-        class="boton-crear"
-        (click)="abrirModal()">
-
-        Nueva categoría
-
-      </ion-button>
-
-    </div>
-
-  }
+  </div>
 
 </ion-content>
 

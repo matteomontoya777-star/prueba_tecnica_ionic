@@ -14,60 +14,139 @@
 
 <ion-content class="ion-padding">
 
-  @if (tareasInicio.length === 0) {
+  <div class="contenedor-pantalla">
 
-    <div class="estado-vacio">
+    @if (tareasInicio.length === 0) {
 
-      <h2>No tienes tareas pendientes</h2>
+      <div class="estado-vacio">
 
-      <p>
-        Crea una tarea para comenzar.
-      </p>
+        <h2>No tienes tareas pendientes</h2>
 
-    </div>
+        <p>
+          Crea una tarea para comenzar.
+        </p>
 
-  } @else {
+      </div>
 
-    <h2>
+    } @else {
 
-      Próximas tareas
+      <h2>
 
-    </h2>
+        Próximas tareas
 
-    @for (tarea of tareasInicio; track tarea.id) {
+      </h2>
 
-      <ion-item>
+      @for (tarea of tareasInicio; track tarea.id; let i = $index) {
 
-        <ion-label>
+        <div class="tarjeta-tarea">
 
-          {{ tarea.nombre }}
+          <div class="fila-superior">
 
-        </ion-label>
+            <ion-checkbox
+              [checked]="tarea.seleccionada"
+              (ionChange)="completarTarea(i)">
+            </ion-checkbox>
 
-        <span>
+            <span
+              class="nombre-tarea"
+              [class.completada]="tarea.seleccionada">
 
-          @switch (tarea.prioridad) {
+              {{ tarea.nombre }}
 
-            @case ('Alta') {
-              🔴
+            </span>
+
+            @if (tarea.prioridad === 'Alta') {
+
+              <span class="prioridad alta"></span>
+
+            } @else if (tarea.prioridad === 'Media') {
+
+              <span class="prioridad media"></span>
+
+            } @else {
+
+              <span class="prioridad baja"></span>
+
             }
 
-            @case ('Media') {
-              🟡
-            }
+          </div>
 
-            @case ('Baja') {
-              🟢
-            }
+          <div class="fila-inferior">
 
-          }
+            <span class="categoria">
 
-        </span>
+              @if (tarea.categoria) {
 
-      </ion-item>
+                {{ tarea.categoria }}
+
+              } @else {
+
+                Sin categoría
+
+              }
+
+            </span>
+
+            <div class="acciones">
+
+              <ion-icon
+                class="icono-editar"
+                name="create-outline"
+                (click)="editarTarea(i)">
+              </ion-icon>
+
+              <ion-icon
+                class="icono-eliminar"
+                name="trash-outline"
+                (click)="eliminarTarea(i)">
+              </ion-icon>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      }
+
+      @if (cambiosPendientes) {
+
+        <div class="contenedor-boton">
+
+          <ion-button
+            color="success"
+            (click)="guardarCambios()">
+
+            Guardar cambios
+
+          </ion-button>
+
+        </div>
+
+      }
 
     }
 
-  }
+  </div>
+
 
 </ion-content>
+
+<ion-modal
+  class="modal-tarea"
+  [isOpen]="modalAbierto"
+  (didDismiss)="cerrarModal($event)">
+
+  <ng-template>
+
+    <app-tarea-modal
+      [categorias]="categoriaService.categorias"
+      [titulo]="indiceEditar >= 0 ? 'Editar tarea' : 'Nueva tarea'"
+      [nombre]="indiceEditar >= 0 ? tareaService.tareas[indiceEditar].nombre : ''"
+      [categoria]="indiceEditar >= 0 ? tareaService.tareas[indiceEditar].categoria : ''"
+      [prioridad]="indiceEditar >= 0 ? tareaService.tareas[indiceEditar].prioridad : 'Media'">
+    </app-tarea-modal>
+
+  </ng-template>
+
+</ion-modal>

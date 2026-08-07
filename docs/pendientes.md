@@ -84,19 +84,9 @@
 - [x] Mostrar las 3 tareas pendientes de mayor prioridad.
 
 # Acciones Pantalla Inicio
-- [ ] Permitir completar una tarea.
-- [ ] Permitir editar una tarea.
-- [ ] Permitir eliminar una tarea.
-
----
-
-# Persistencia
-
-- [ ] Guardar categorías.
-- [ ] Cargar información al iniciar (Categorías).
-- [ ] Guardar tareas.
-- [ ] Cargar información al iniciar (Tareas).
-- [ ] Cargar información al iniciar (Inicio).
+- [x] Permitir completar una tarea.
+- [x] Permitir editar una tarea.
+- [x] Permitir eliminar una tarea.
 
 ---
 

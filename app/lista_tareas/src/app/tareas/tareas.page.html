@@ -10,183 +10,203 @@
 
 <ion-content class="ion-padding">
 
-  <div class="contenedor-filtros">
+  <div class="contenedor-pantalla">
 
-    <ion-item>
+    <div class="contenedor-filtros">
 
-      <ion-select
-        [(ngModel)]="categoriaFiltro">
+      <div class="grupo-filtro">
 
-        <ion-select-option value="">
-          Todas
-        </ion-select-option>
+        <ion-label class="titulo-filtro">
+        Categoría
+      </ion-label>
 
-        @for (categoria of categoriaService.categorias; track categoria.id) {
+      <ion-item>
 
-          <ion-select-option
-            [value]="categoria.nombre">
+        <ion-select
+          [(ngModel)]="categoriaFiltro">
 
-            {{ categoria.nombre }}
-
+          <ion-select-option value="">
+            Todas
           </ion-select-option>
 
-        }
+          @for (categoria of categoriaService.categorias; track categoria.id) {
 
-      </ion-select>
+            <ion-select-option
+              [value]="categoria.nombre">
 
-    </ion-item>
+              {{ categoria.nombre }}
 
-    <ion-item>
-
-      <ion-select
-        [(ngModel)]="estadoFiltro">
-
-        <ion-select-option value="Pendientes">
-          Pendientes
-        </ion-select-option>
-
-        <ion-select-option value="Terminadas">
-          Terminadas
-        </ion-select-option>
-
-        <ion-select-option value="Todas">
-          Todas
-        </ion-select-option>
-
-      </ion-select>
-
-    </ion-item>
-
-  </div>
-
-  @if (tareaService.tareas.length === 0) {
-
-    <div class="estado-vacio">
-
-      <h2>No hay tareas registradas</h2>
-
-      <p>
-        Crea tu primera tarea para comenzar.
-      </p>
-
-      <div class="contenedor-boton">
-
-        <ion-button
-          class="boton-crear"
-          (click)="abrirModal()">
-
-          Nueva tarea
-
-        </ion-button>
-
-      </div>
-
-    </div>
-
-  } @else {
-
-    @for (tarea of tareasFiltradas; track tarea.id; let i = $index) {
-
-      <div class="tarjeta-tarea">
-
-        <div class="fila-superior">
-
-          <ion-checkbox
-            [checked]="tarea.seleccionada"
-            (ionChange)="completarTarea(i)">
-          </ion-checkbox>
-
-          <span
-            class="nombre-tarea"
-            [class.completada]="tarea.seleccionada">
-
-            {{ tarea.nombre }}
-
-          </span>
-
-          @if (tarea.prioridad === 'Alta') {
-
-            <span class="prioridad alta"></span>
-
-          } @else if (tarea.prioridad === 'Media') {
-
-            <span class="prioridad media"></span>
-
-          } @else {
-
-            <span class="prioridad baja"></span>
+            </ion-select-option>
 
           }
 
+        </ion-select>
+
+      </ion-item>
+
+    </div>
+
+    <div class="grupo-filtro">
+
+      <ion-label class="titulo-filtro">
+        Estado
+      </ion-label>
+
+      <ion-item>
+
+        <ion-select
+          [(ngModel)]="estadoFiltro">
+
+          <ion-select-option value="Pendientes">
+            Pendientes
+          </ion-select-option>
+
+          <ion-select-option value="Terminadas">
+            Terminadas
+          </ion-select-option>
+
+          <ion-select-option value="Todas">
+            Todas
+          </ion-select-option>
+
+        </ion-select>
+
+      </ion-item>
+
+    </div>
+
+    </div>
+
+    @if (tareaService.tareas.length === 0) {
+
+      <div class="estado-vacio">
+
+        <h2>No hay tareas registradas</h2>
+
+        <p>
+          Crea tu primera tarea para comenzar.
+        </p>
+
+        <div class="contenedor-boton">
+
+          <ion-button
+            class="boton-crear"
+            (click)="abrirModal()">
+
+            Nueva tarea
+
+          </ion-button>
+
         </div>
 
-        <div class="fila-inferior">
+      </div>
 
-          <span class="categoria">
+    } @else {
 
-            @if (tarea.categoria) {
+      @for (tarea of tareasFiltradas; track tarea.id; let i = $index) {
 
-              {{ tarea.categoria }}
+        <div class="tarjeta-tarea">
+
+          <div class="fila-superior">
+
+            <ion-checkbox
+              [checked]="tarea.seleccionada"
+              (ionChange)="completarTarea(i)">
+            </ion-checkbox>
+
+            <span
+              class="nombre-tarea"
+              [class.completada]="tarea.seleccionada">
+
+              {{ tarea.nombre }}
+
+            </span>
+
+            @if (tarea.prioridad === 'Alta') {
+
+              <span class="prioridad alta"></span>
+
+            } @else if (tarea.prioridad === 'Media') {
+
+              <span class="prioridad media"></span>
 
             } @else {
 
-              Sin categoría
+              <span class="prioridad baja"></span>
 
             }
 
-          </span>
+          </div>
 
-          <div class="acciones">
+          <div class="fila-inferior">
 
-            <ion-icon
-              class="icono-editar"
-              name="create-outline"
-              (click)="editarTarea(i)">
-            </ion-icon>
+            <span class="categoria">
 
-            <ion-icon
-              class="icono-eliminar"
-              name="trash-outline"
-              (click)="eliminarTarea(i)">
-            </ion-icon>
+              @if (tarea.categoria) {
+
+                {{ tarea.categoria }}
+
+              } @else {
+
+                Sin categoría
+
+              }
+
+            </span>
+
+            <div class="acciones">
+
+              <ion-icon
+                class="icono-editar"
+                name="create-outline"
+                (click)="editarTarea(i)">
+              </ion-icon>
+
+              <ion-icon
+                class="icono-eliminar"
+                name="trash-outline"
+                (click)="eliminarTarea(i)">
+              </ion-icon>
+
+            </div>
 
           </div>
 
         </div>
 
-      </div>
+      }
 
-    }
+      @if (cambiosPendientes) {
 
-    @if (cambiosPendientes) {
+        <div class="contenedor-boton">
+
+          <ion-button
+            color="success"
+            (click)="guardarCambios()">
+
+            Guardar cambios
+
+          </ion-button>
+
+        </div>
+
+      }
 
       <div class="contenedor-boton">
 
-        <ion-button
-          color="success"
-          (click)="guardarCambios()">
+          <ion-button
+            class="boton-crear"
+            (click)="abrirModal()">
 
-          Guardar cambios
+            Nueva tarea
+            
+          </ion-button>
 
-        </ion-button>
-
-      </div>
+        </div>
 
     }
 
-    <div class="contenedor-boton">
-
-        <ion-button
-          class="boton-crear"
-          (click)="abrirModal()">
-
-          Nueva tarea
-          
-        </ion-button>
-
-      </div>
-
-  }
+  </div>
 
 </ion-content>
 
