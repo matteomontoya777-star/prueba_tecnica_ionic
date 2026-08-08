@@ -121,9 +121,9 @@
 
 # Documentación
 
-- [ ] Actualizar README.
+- [x] Actualizar README.
 - [x] Tomar capturas.
 - [x] Grabar video.
-- [ ] Responder preguntas técnicas.
+- [x] Responder preguntas técnicas.
 
 ---
