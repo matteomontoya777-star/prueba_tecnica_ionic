@@ -123,14 +123,7 @@
 
 - [ ] Actualizar README.
 - [x] Tomar capturas.
-- [ ] Grabar video.
+- [x] Grabar video.
 - [ ] Responder preguntas técnicas.
 
 ---
-
-# Entrega
-
-- [ ] Revisar funcionamiento completo.
-- [ ] Subir cambios a GitHub.
-- [ ] Validar instalación.
-- [ ] Preparar entrega.
