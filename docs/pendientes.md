@@ -100,30 +100,29 @@
 
 # Persistencia Local
 
-- [ ] Guardar tareas.
-- [] Guardar categorías.
-- [] Recuperar al iniciar. 
+- [x] Guardar tareas.
+- [x] Guardar categorías.
+- [x] Recuperar al iniciar. 
 
-# Android / iOS
+# Android | iOS
 
-- [ ] Configurar Cordova.
-- [ ] Generar APK.
-- [ ] Generar IPA.
+- [x] Generar APK.
+- [x] Generar IPA. (entorno preparado)
 
 ---
 
 # Optimización
 
-- [ ] Revisar carga inicial.
-- [ ] Revisar manejo de datos.
-- [ ] Revisar uso de memoria.
+- [x] Revisar carga inicial.
+- [x] Revisar manejo de datos.
+- [x] Revisar uso de memoria.
 
 ---
 
 # Documentación
 
 - [ ] Actualizar README.
-- [ ] Tomar capturas.
+- [x] Tomar capturas.
 - [ ] Grabar video.
 - [ ] Responder preguntas técnicas.
 
